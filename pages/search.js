@@ -3,7 +3,6 @@ import SearchHeader from "../components/SearchHeader";
 import Response from "../Response";
 
 export default function search({ results }) {
-  console.log(results);
   return (
     <div>
       <Head>
