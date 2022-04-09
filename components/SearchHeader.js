@@ -42,9 +42,7 @@ export default function SearchHeader() {
           />
           <MicrophoneIcon className="h-6 hidden sm:inline-flex text-blue-500 pl-4 border-l-2 border-gray-300 mr-3" />
           <SearchIcon className="h-6 hidden sm:inline-flex text-blue-500" />
-          <button onClick={search} type="submit" hidden>
-            {" "}
-          </button>
+          <button onClick={search} type="submit" hidden />
         </form>
 
         <User className="ml-auto whitespace-nowrap" />
