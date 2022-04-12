@@ -23,6 +23,8 @@ export default function Search({ results }) {
 }
 
 export async function getServerSideProps(context) {
+  const startIndex = context.query.start || 1;
+
   // GoogleApiのリクエストは100回/1日の制限があるため、
   // 'hello'で検索した際のレスポンスをコピーしてリクエストせずとも
   // モックデータが返ってくるようにする
@@ -34,7 +36,7 @@ export async function getServerSideProps(context) {
           process.env.API_KEY
         }&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}${
           context.query.searchType && "&seachType=image"
-        }`
+        }&start=${startIndex}`
       ).then((res) => res.json());
 
   return {
