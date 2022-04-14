@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
-} from "@heroIcons/react/solid";
+} from "@heroicons/react/solid";
 
 export default function PaginationButtons() {
   const router = useRouter();

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import Image from "next/image";
-import { MicrophoneIcon, SearchIcon, XIcon } from "@heroIcons/react/solid";
+import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
 import User from "./User";
 import SearchHeaderOptions from "./SearchHeaderOptions";
 
