@@ -3,6 +3,7 @@ import SearchHeader from "../components/SearchHeader";
 import Response from "../Response";
 import SearchResults from "../components/SearchResults";
 import { useRouter } from "next/router";
+import ImageResults from "../components/ImageResults";
 
 export default function Search({ results }) {
   const router = useRouter();
@@ -16,8 +17,12 @@ export default function Search({ results }) {
       {/* Search Header */}
       <SearchHeader />
 
-      {/* Search Results */}
-      <SearchResults results={results} />
+      {/* Search web and images Results */}
+      {router.query.searchType == "image" ? (
+        <ImageResults results={results} />
+      ) : (
+        <SearchResults results={results} />
+      )}
     </div>
   );
 }
@@ -28,14 +33,14 @@ export async function getServerSideProps(context) {
   // GoogleApiのリクエストは100回/1日の制限があるため、
   // 'hello'で検索した際のレスポンスをコピーしてリクエストせずとも
   // モックデータが返ってくるようにする
-  const mockData = true;
+  const mockData = false;
   const data = mockData
     ? Response
     : await fetch(
         `https://www.googleapis.com/customsearch/v1?key=${
           process.env.API_KEY
         }&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}${
-          context.query.searchType && "&seachType=image"
+          context.query.searchType && "&searchType=image"
         }&start=${startIndex}`
       ).then((res) => res.json());
 
