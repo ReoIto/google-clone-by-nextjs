@@ -5,6 +5,7 @@ import { SearchIcon, MicrophoneIcon } from "@heroicons/react/solid";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useRef } from "react";
+import { Constants } from "../constants";
 
 export default function Home() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function Home() {
     e.preventDefault();
 
     const randomTerm = await fetch(
-      "https://random-word-api.herokuapp.com/word?number=1"
+      `${Constants.RandomWordApiPath}?number=1`
     ).then((res) => res.json());
     if (!randomTerm) {
       return;
@@ -51,7 +52,7 @@ export default function Home() {
           width="300"
           height="100"
           objectFit="cover"
-          src="https://cdn.pixabay.com/photo/2015/11/02/14/01/google-1018443_960_720.png"
+          src={Constants.GoogleLogoImagePath}
           alt="google logo"
         />
 
