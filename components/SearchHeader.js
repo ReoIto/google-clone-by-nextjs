@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
 import User from "./User";
 import SearchHeaderOptions from "./SearchHeaderOptions";
+import { Constants } from "../constants";
 
 export default function SearchHeader() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function SearchHeader() {
           width="120"
           height="40"
           objectFit="contain"
-          src="https://cdn.pixabay.com/photo/2015/11/02/14/01/google-1018443_960_720.png"
+          src={Constants.GoogleLogoImagePath}
           alt="google logo"
           className="cursor-pointer"
         />

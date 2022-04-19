@@ -1,5 +1,7 @@
 import Header from "../../components/Header";
 import { getProviders, signIn } from "next-auth/react";
+import { Constants } from "../../constants";
+import Image from "next/image";
 
 // next-auth/reactのsignInと名前衝突してしまうため、
 // component名をsigninにする
@@ -10,10 +12,12 @@ export default function signin({ providers }) {
       <div className="mt-40">
         {Object.values(providers).map((provider) => (
           <div key={provider.name} className="flex flex-col items-center">
-            <img
-              className="w-52 object-cover"
-              src="https://cdn.pixabay.com/photo/2015/11/02/14/01/google-1018443_960_720.png"
+            <Image
+              className="object-cover"
+              src={Constants.GoogleLogoImagePath}
               alt="google-logo"
+              width="300px"
+              height="100px"
             />
             <p className="text-sm italic my-10 text-center">
               This website is created for learning purposes.

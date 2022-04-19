@@ -4,6 +4,7 @@ import Response from "../Response";
 import SearchResults from "../components/SearchResults";
 import { useRouter } from "next/router";
 import ImageResults from "../components/ImageResults";
+import { Constants } from "../constants";
 
 export default function Search({ results }) {
   const router = useRouter();
@@ -37,9 +38,9 @@ export async function getServerSideProps(context) {
   const data = mockData
     ? Response
     : await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${
-          process.env.API_KEY
-        }&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}${
+        `${Constants.GoogleApiCustomSearchPath}?key=${process.env.API_KEY}&cx=${
+          process.env.CONTEXT_KEY
+        }&q=${context.query.term}${
           context.query.searchType && "&searchType=image"
         }&start=${startIndex}`
       ).then((res) => res.json());
